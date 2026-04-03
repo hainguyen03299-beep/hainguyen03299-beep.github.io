@@ -193,7 +193,7 @@
         }
 
         /* Màu sắc riêng cho từng khối */
-        .card-6 { background-color: #E3F2FD; }
+        .card-6 { background-color: #FFF3E0; } /* Đổi sang màu cam nhạt để hợp với cầu vồng */
         .card-7 { background-color: #F1F8E9; }
         .card-8 { background-color: #FFFDE7; }
         .card-9 { background-color: #F3E5F5; }
@@ -205,7 +205,7 @@
     <!-- Container cho hoa rơi -->
     <div id="flower-container"></div>
 
-    <!-- Nhạc nền (Sử dụng link nhạc không bản quyền lofi chill) -->
+    <!-- Nhạc nền -->
     <audio id="bg-music" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
@@ -221,8 +221,9 @@
         </header>
 
         <main class="grid">
+            <!-- Thay đổi icon bướm thành cầu vồng ở đây -->
             <a class="card card-6" href="https://hainguyen03299-beep.github.io/Khoi6-TinHoc/indexKhoi6.html">
-                <div class="icon">🦋</div>
+                <div class="icon">🌈</div>
                 <span>Khối 6</span>
             </a>
 
@@ -257,26 +258,22 @@
             const flower = document.createElement('div');
             flower.className = 'flower';
             
-            // Random size và vị trí
             const size = Math.random() * 15 + 10 + 'px';
             flower.style.width = size;
             flower.style.height = size;
             flower.style.left = Math.random() * 100 + 'vw';
             flower.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             
-            // Random thời gian rơi
             const duration = Math.random() * 5 + 5 + 's';
             flower.style.animationDuration = duration;
             
             container.appendChild(flower);
 
-            // Xóa hoa sau khi rơi xong
             setTimeout(() => {
                 flower.remove();
             }, parseFloat(duration) * 1000);
         }
 
-        // Tạo hoa định kỳ
         setInterval(createFlower, 800);
 
         // Xử lý nhạc nền
@@ -290,7 +287,6 @@
                 musicBtn.innerText = '🔇';
             } else {
                 music.play().catch(() => {
-                    // Trình duyệt có thể chặn autoplay
                     console.log("Cần tương tác để phát nhạc");
                 });
                 musicBtn.innerText = '🎵';
@@ -298,7 +294,7 @@
             isPlaying = !isPlaying;
         });
 
-        // Animation chuyển trang mượt mà
+        // Animation chuyển trang
         document.querySelectorAll(".card").forEach(link => {
             link.addEventListener("click", function(e) {
                 e.preventDefault();
